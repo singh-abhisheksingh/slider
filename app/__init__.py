@@ -11,5 +11,5 @@ def index():
 	return render_template("index.html", image_list=image_list)
 
 if __name__ == '__main__':
-	app.run(host='192.168.43.108')
-	# app.run()
+	# app.run(host='192.168.43.108')
+	app.run()
