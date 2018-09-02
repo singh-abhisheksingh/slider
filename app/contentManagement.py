@@ -17,13 +17,19 @@ def Slide_Extractor():
 	old_count = 0
 
 	for element in ppt_list:
-		Presentation = Application.Presentations.Open(r'D:/slider/'+element)
+		print(element, type(element))
+		path = os.listdir('../../slider/')
+		print(path, type(path))
+		if(element in path):
+			print("Yes")
+		print(str(path)+element)
+		Presentation = Application.Presentations.Open('D:/slider/'+element)
 
 		slide_count = slide_count + len(Presentation.Slides)
 		print (slide_count)
 
 		for c in range(old_count, slide_count):
-			Presentation.Slides[c-old_count].Export(r'D:\slider\app\static\images\image{0}.jpg'.format(c), "JPG", 1366, 768)
+			Presentation.Slides[c-old_count].Export(r'D:\slider\app\media\image{0}.jpg'.format(c), "JPG", 1366, 768)
 
 		old_count = slide_count
 
