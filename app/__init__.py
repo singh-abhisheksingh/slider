@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import request, url_for, redirect, session
 from flask import send_from_directory
 
 from contentManagement import Content
@@ -10,8 +11,10 @@ app = Flask(__name__)
 app.secret_key = "super secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+@app.route('/logout/')
 @app.route('/')
 def index():
+	session['logged_in'] = False
 	return render_template("index.html", image_list=image_list)
 
 @app.route('/login/index/')
@@ -32,6 +35,7 @@ def loginpage():
 			attempted_password = request.form['password']
 
 			if attempted_username == "admin" and attempted_password == "password":
+				session['logged_in'] = True
 				return redirect(url_for("adminPanel"))
 			else:
 				error = "Invalid Credentials. Try Again."
@@ -42,8 +46,14 @@ def loginpage():
 		print("in except")
 		return render_template("login.html", error=error)
 
+@app.route('/adminPanel/')
+def adminPanel():
+	if (session['logged_in'] == True):
+		return render_template("adminPanel.html")
+	else:
+		return "Kindly log in"
 
 if __name__ == '__main__':
-	# app.run(host='192.168.43.108')
-	
+	# app.run(host='192.168.12.155')
+
 	app.run(debug=True)
