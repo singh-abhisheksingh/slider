@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!--Import Google Icon Font-->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<!--Import materialize.css-->
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+		<!--Import index.css-->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+		<!--Import animate.css-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,28 +13,24 @@
 		<title>JSS ACADEMY OF TECHNICAL EDUCATION</title>
 	</head>
 
-	<body>
+	<body id="body" style="height: 100vh;width: 100vw;">
 
-		<div class="slider fullscreen"">
-			<ul class="slides">
-
-				{% for i in image_list %}
-				<li>
-					<img src="{{ url_for('static', filename='images/'+i) }}">
-				</li>
-				{% endfor %}
-
-			</ul>
-		</div>
-
-		<!--Import jQuery before materialize.js-->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
-
-		<script>
-			$(document).ready(function(){
-				$('.slider').slider();
-			});
+		<script type="text/javascript">
+			var len = {{image_list|length}};
+			console.log(len);
+			var i = 0, howManyTimes = len;
+			function f() {
+				document.getElementById('body').innerHTML="<img width='100%' height='100%' src='/media/image"+i+".jpg'>";
+				if( i < howManyTimes ){
+					setTimeout( f, 3000 );
+				}
+				i++;
+				if(i == howManyTimes)
+				{
+					i=0;
+				}
+			}
+			f();
 		</script>
 
 	</body>
