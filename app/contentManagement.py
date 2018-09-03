@@ -47,3 +47,14 @@ def Content():
 	print(IMAGE_LIST)
 
 	return IMAGE_LIST
+
+
+def Display():
+	slide_directory = os.listdir('..')
+	print (slide_directory)
+	ppt_list = []
+	for ppt in slide_directory:
+		if ppt.endswith('.pptx') or ppt.endswith('.ppt'):
+			ppt_list.append(ppt)
+	print (ppt_list)
+	return ppt_list
