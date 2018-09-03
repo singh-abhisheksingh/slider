@@ -2,10 +2,11 @@ from flask import Flask, render_template
 from flask import request, url_for, redirect, session
 from flask import send_from_directory
 
-from contentManagement import Content
+from contentManagement import Content, Display
 
 UPLOAD_FOLDER = './media'
 image_list = Content()
+ppt_list = Display()
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -18,7 +19,9 @@ def index():
 	return render_template("index.html", image_list=image_list)
 
 @app.route('/login/index/')
+@app.route('/adminPanel/index/')
 def back_to_index():
+	session['logged_in'] = False
 	return redirect(url_for("index"))
 
 @app.route('/media/<filename>')
@@ -28,6 +31,7 @@ def uploaded_file(filename):
 @app.route('/login/', methods = ['GET','POST'])
 def loginpage():
 	error = None
+	session['logged_in'] = False
 	try:
 		print ("in try")
 		if request.method == "POST":
@@ -49,7 +53,7 @@ def loginpage():
 @app.route('/adminPanel/')
 def adminPanel():
 	if (session['logged_in'] == True):
-		return render_template("adminPanel.html")
+		return render_template("adminPanel.html", PPT_LIST=ppt_list)
 	else:
 		return "Kindly log in"
 
