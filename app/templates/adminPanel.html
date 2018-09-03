@@ -38,10 +38,11 @@
 		</nav>
 		<ul class="collection with-header">
 			<li class="collection-header"><h4>List of Slides</h4></li>
-			<li class="collection-item"><div>Alvin<a href="#!" class="secondary-content waves-effect waves-red"><i class="material-icons">delete</i></a></div></li>
-			<li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div></li>
-			<li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div></li>
-			<li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div></li>
+			
+			{% for p in PPT_LIST %}
+			<li class="collection-item"><div>{{ p }}<a href="#!" class="secondary-content waves-effect waves-red"><i class="material-icons">delete</i></a></div></li>
+			{% endfor %}
+
 		</ul>
 			
 		<form action="#">
