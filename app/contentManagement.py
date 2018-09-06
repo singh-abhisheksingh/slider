@@ -1,8 +1,10 @@
 import os
 import win32com.client
+import pythoncom
 
 def Slide_Extractor():
-	slide_directory = os.listdir('..')
+	pythoncom.CoInitialize()
+	slide_directory = os.listdir('./uploads')
 	print (slide_directory)
 	ppt_list = []
 	for ppt in slide_directory:
@@ -18,12 +20,12 @@ def Slide_Extractor():
 
 	for element in ppt_list:
 		print(element, type(element))
-		path = os.listdir('../../slider/')
+		path = os.listdir('./uploads')
 		print(path, type(path))
 		if(element in path):
 			print("Yes")
 		print(str(path)+element)
-		Presentation = Application.Presentations.Open('D:/slider/'+element)
+		Presentation = Application.Presentations.Open('D:/slider/app/uploads/'+element)
 
 		slide_count = slide_count + len(Presentation.Slides)
 		print (slide_count)
@@ -50,7 +52,7 @@ def Content():
 
 
 def Display():
-	slide_directory = os.listdir('..')
+	slide_directory = os.listdir('./uploads')
 	print (slide_directory)
 	ppt_list = []
 	for ppt in slide_directory:
@@ -58,3 +60,14 @@ def Display():
 			ppt_list.append(ppt)
 	print (ppt_list)
 	return ppt_list
+
+
+def Delete(file_name):
+	if(file_name[:3] == "yes"):
+		file_name = file_name[4:]
+		os.remove("./uploads/"+file_name)
+		slide_directory = os.listdir('./uploads')
+		print (slide_directory)
+		Content()
+	else:
+		print("You did not want to delete")
