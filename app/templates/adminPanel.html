@@ -36,7 +36,6 @@
 				</ul>
 			</div>
 		</nav>
-		
 		<ul class="collection with-header">
 			<li class="collection-header"><h4>List of Slides</h4></li>
 			
@@ -66,7 +65,7 @@
 
 		</ul>
 			
-		<form action="#">
+		<form action="/upload/" method="post" enctype="multipart/form-data">
 			<div class="file-field input-field">
 				<div class="red btn">
 					<span>Upload ppt</span>
@@ -76,10 +75,11 @@
 					<input class="file-path validate" type="text" placeholder="Upload one or more files">
 				</div>
 			</div>
-			<button class="red btn waves-effect waves-light" type="submit" name="action">Submit
+			<button class="red btn waves-effect waves-light" type="submit" name="action">Done
 				<i class="material-icons right">send</i>
 			</button>
 		</form>
+			
 	</div>
 
 	<!--Import jQuery before materialize.js-->
@@ -89,6 +89,9 @@
 	<script>
 		$(document).ready(function(){
 			$(".button-collapse").sideNav();
+		});
+		$(document).ready(function(){
+			$(".modal").modal();
 		});
 	</script>
 </body>
