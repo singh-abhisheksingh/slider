@@ -28,11 +28,11 @@
 				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="index">Home</a></li>
-					<li><a href="index">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
 					<li><a href="index">Home</a></li>
-					<li><a href="index">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -64,20 +64,45 @@
 			</form>
 
 		</ul>
-			
+
+		<form action="/customize/" method="post">
+			<ul class="collection with-header">
+				<li class="collection-header"><h5>Customizations</h5></li>
+				<li class="collection-item">
+					<p class="range-field" style="margin-top: 0;">
+					Duration between 2 slides:
+					<input style="margin-top: 0;" type="range" name="slideIt" value="{{ request.form.slideIt }}" min="1" max="15" /></p>
+				</li>
+				<li class="collection-item">
+					<p class="range-field" style="margin-top: 0;">
+					Count before each reload:
+					<input style="margin-top: 0;" type="range" name="reloadIt" value="{{ request.form.reloadIt }}" min="1" max="5" /></p>
+				</li>
+				<li class="row collection-item">
+					<div class="col s1 offset-s11 ">
+						<button class="btn-floating red btn waves-effect waves-light" type="submit" name="action">
+							<i class="material-icons right">done</i>
+						</button>
+					</div>
+				</li>
+			</ul>
+		</form>
+		
 		<form action="/upload/" method="post" enctype="multipart/form-data">
-			<div class="file-field input-field">
-				<div class="red btn">
-					<span>Upload ppt</span>
-					<input type="file" name="file" accept=".ppt, .pptx" multiple>
+			<div class="row file-field input-field">
+				<div class="col s2 red btn">
+					<span>Select ppt</span>
+					<input type="file" name="file" accept=".ppt, .pptx">
 				</div>
-				<div class="file-path-wrapper">
+				<div class="col s8 file-path-wrapper">
 					<input class="file-path validate" type="text" placeholder="Upload one or more files">
 				</div>
+				<div class="col s2">
+					<button class="red btn waves-effect waves-light" type="submit" name="action">Upload
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
 			</div>
-			<button class="red btn waves-effect waves-light" type="submit" name="action">Done
-				<i class="material-icons right">send</i>
-			</button>
 		</form>
 			
 	</div>
