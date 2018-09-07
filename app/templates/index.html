@@ -2,8 +2,26 @@
 <html>
 	<head>
 		<!--Import index.css-->
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+		
+		<style>
+			*{
+	padding: 0;
+	margin: 0;
+	outline: 0;
+	border: 0;
+}
+body{
+	max-height: 100vh;
+	max-width: 100vw;
+	overflow: hidden; 
 
+}
+#image-holder{
+	height: 100%;
+	width: 100%;
+}
+
+		</style>
 		<!--Import animate.css-->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
@@ -13,23 +31,44 @@
 		<title>JSS ACADEMY OF TECHNICAL EDUCATION</title>
 	</head>
 
-	<body id="body" style="height: 100vh;width: 100vw;">
+	<body>
+		<div id="image-holder">
+			
+		</div>
 
 		<script type="text/javascript">
-			var len = {{image_list|length}};
+			var len = {{ image_list|length }};
 			console.log(len);
+			var count = 0;
+			var max_slide_duration = {{ slide_duration }};
+			var max_count = {{ reload_count }};
 			var i = 0, howManyTimes = len;
+
+			console.log(max_slide_duration)
+			console.log(max_count)			
+
 			function f() {
-				document.getElementById('body').innerHTML="<img width='100%' height='100%' src='/media/image"+i+".jpg'>";
+				var random = Math.floor(Math.random()*10000000);
+				console.log(random);
+				document.getElementById('image-holder').innerHTML="<img class='animated fadeIn' style='width:100%;height:100%;' src='/media/image"+i+".jpg?x="+random+"'>";
 				if( i < howManyTimes ){
-					setTimeout( f, 3000 );
+					setTimeout( f, max_slide_duration );
 				}
 				i++;
 				if(i == howManyTimes)
 				{
 					i=0;
+					count++;
+					if(count == max_count)
+					{
+						setTimeout(function() {location.reload()}, max_slide_duration );
+					}
+				}
+				if(i == 1 && howManyTimes == 0){
+					setTimeout(function() {location.reload()}, max_slide_duration );
 				}
 			}
+
 			f();
 		</script>
 

@@ -68,6 +68,5 @@ def Delete(file_name):
 		os.remove("./uploads/"+file_name)
 		slide_directory = os.listdir('./uploads')
 		print (slide_directory)
-		Content()
 	else:
 		print("You did not want to delete")
