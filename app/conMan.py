@@ -58,3 +58,24 @@ def Slide_Extractor():
 	print (os.getcwd())
 
 	return (len(image_list))
+
+
+def Content():
+	IMAGE_LIST = []
+	count = Slide_Extractor()
+	for i in range(1,count+1):
+		IMAGE_LIST.append("image{0}.jpg".format(i))
+
+	print(IMAGE_LIST)
+	return IMAGE_LIST
+
+
+def Display():
+	slide_directory = os.listdir('./uploads')
+	ppt_list = []
+	for ppt in slide_directory:
+		if ppt.endswith('.pptx') or ppt.endswith('.ppt'):
+			ppt_list.append(ppt)
+
+	print (ppt_list)
+	return (ppt_list)
