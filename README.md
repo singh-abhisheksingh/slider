@@ -1,10 +1,21 @@
 # slider
-# DESCRIPTION
-This app displays the given powerpoint presentations on a webpage using flask
-# BASIC SETUP
-Install the python flask app in any virtual environment (like virtualenv) and then place the repository files in the same folder
+### DESCRIPTION
+This app displays the given powerpoint presentations on a webpage using flask which can be used for displaying on different devices connected to the same network
+### INSTALLATION INSTRUCTIONS
+1. Install [python] 3.6 or above, [git], [virtualenv], in your computer, if you don't have it already.
 
-Install the pypiwin32 library using pip install pypiwin32
-Now execute the __init__.py file in the folder app
+2. Get the source code on your machine via git.
+> git clone https://github.com/singh-abhisheksingh/slider.git
 
-Note: Do not forget to set the path of the slides and the exported images in the contentManagement.py file (at both the locations) as per the location in your PC
+3. Create a python virtual environment [venv] and install python dependencies.
+
+```
+cd slider
+virtualenv venv
+source venv/bin/activate
+pip install requirements.txt
+```
+
+4. That's it. Now you can run development server at [http://127.0.0.1:5000]
+
+> python3 \_\_init\_\_.py
