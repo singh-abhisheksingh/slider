@@ -79,3 +79,18 @@ def Display():
 
 	print (ppt_list)
 	return (ppt_list)
+
+def Delete(file_name):
+	if(file_name[:3] == "yes"):
+		file_name = file_name[4:]
+		print (file_name)
+		print (type(file_name))
+		os.remove('./uploads/'+file_name)
+		file_name = file_name.replace('pptx', 'pdf')
+		file_name = file_name.replace('ppt', 'pdf')
+		print (file_name)
+		os.remove('./uploads/'+file_name)
+		slide_directory = os.listdir('./uploads')
+		print (slide_directory)
+	else:
+		print("You did not want to delete")
