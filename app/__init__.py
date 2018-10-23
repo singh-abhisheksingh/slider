@@ -2,9 +2,10 @@ from flask import Flask, render_template
 from flask import request, url_for, redirect, session
 from flask import send_from_directory
 from werkzeug import secure_filename
+import config
 import os
 
-from contentManagement import Content, Display, Delete
+from conMan import Content, Display, Delete
 
 IMAGE_UPLOAD_FOLDER = './media'
 PPT_UPLOAD_FOLDER = './uploads'
@@ -51,7 +52,7 @@ def loginpage():
 			attempted_username = request.form['username']
 			attempted_password = request.form['password']
 
-			if attempted_username == "admin" and attempted_password == "password":
+			if attempted_username == config.name and attempted_password == config.password:
 				session['logged_in'] = "admin"
 				print (session['logged_in'])
 				return redirect(url_for("adminPanel"))
@@ -71,9 +72,9 @@ def adminPanel():
 			ppt_list = Display()
 			return render_template("adminPanel.html", PPT_LIST=ppt_list)
 		else:
-			return "You have been logged out. Kindly log in to make changes."
+			return "You are logged out. Kindly log in to make changes."
 	except Exception as e:
-		return "You have been logged out. Kindly log in to make changes."
+		return "You are logged out. Kindly log in to make changes."
 
 @app.route('/logout/')
 def logout():
@@ -87,6 +88,7 @@ def deletePpt():
 		Delete(request.form['deleteIt'])
 		global image_list
 		image_list = Content()
+		print (image_list)
 		return redirect(url_for("adminPanel"))
 	else:
 		return redirect(url_for("adminPanel"))

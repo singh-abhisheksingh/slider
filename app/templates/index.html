@@ -42,7 +42,7 @@ body{
 			var count = 0;
 			var max_slide_duration = {{ slide_duration }};
 			var max_count = {{ reload_count }};
-			var i = 0, howManyTimes = len;
+			var i = 1, howManyTimes = len+1;
 
 			console.log(max_slide_duration)
 			console.log(max_count)			
@@ -50,21 +50,21 @@ body{
 			function f() {
 				var random = Math.floor(Math.random()*10000000);
 				console.log(random);
-				document.getElementById('image-holder').innerHTML="<img class='animated fadeIn' style='width:100%;height:100%;' src='/media/image"+i+".jpg?x="+random+"'>";
+				document.getElementById('image-holder').innerHTML="<img class='animated fadeIn' style='width:100%;height:100%;' src='/media/image"+i+".png?x="+random+"'>";
 				if( i < howManyTimes ){
 					setTimeout( f, max_slide_duration );
 				}
 				i++;
 				if(i == howManyTimes)
 				{
-					i=0;
+					i=1;
 					count++;
 					if(count == max_count)
 					{
 						setTimeout(function() {location.reload()}, max_slide_duration );
 					}
 				}
-				if(i == 1 && howManyTimes == 0){
+				if(i == 2 && howManyTimes == 1){
 					setTimeout(function() {location.reload()}, max_slide_duration );
 				}
 			}
