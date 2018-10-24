@@ -16,6 +16,10 @@ source venv/bin/activate
 pip install requirements.txt
 ```
 
-4. That's it. Now you can run development server at [http://127.0.0.1:5000]
+4. Install unoconv using following command
 
-> python3 \_\_init\_\_.py
+> sudo apt-get install unoconv
+
+5. That's it. Now you can run development server at [http://127.0.0.1:5000]
+
+> python \_\_init\_\_.py

@@ -1,0 +1,6 @@
+config.py
+config.pyc
+conMan.pyc
+app/media
+app/__pycache__
+app/uploads

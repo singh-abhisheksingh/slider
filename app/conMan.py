@@ -64,7 +64,7 @@ def Content():
 	IMAGE_LIST = []
 	count = Slide_Extractor()
 	for i in range(1,count+1):
-		IMAGE_LIST.append("image{0}.jpg".format(i))
+		IMAGE_LIST.append("image{0}.png".format(i))
 
 	print(IMAGE_LIST)
 	return IMAGE_LIST
