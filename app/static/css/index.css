@@ -1,0 +1,19 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	overflow: hidden;
+}
+
+.image-holder {
+	display: grid;
+	height: 100%;
+}
+
+#center-fit {
+	max-width: 100%;
+	max-height: 100vh;
+	margin: auto;
+}

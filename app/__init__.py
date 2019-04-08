@@ -47,14 +47,14 @@ def loginpage():
 	error = None
 	# session['logged_in'] = False
 	try:
-		print ("in try")
+		# print ("in try")
 		if request.method == "POST":
 			attempted_username = request.form['username']
 			attempted_password = request.form['password']
 
 			if attempted_username == config.name and attempted_password == config.password:
 				session['logged_in'] = "admin"
-				print (session['logged_in'])
+				# print (session['logged_in'])
 				return redirect(url_for("adminPanel"))
 			else:
 				error = "Invalid Credentials. Try Again."
@@ -62,7 +62,7 @@ def loginpage():
 		return render_template("login.html", error=error)
 
 	except Exception as e:
-		print("in except")
+		# print("in except")
 		return render_template("login.html", error=error)
 
 @app.route('/adminPanel/')
@@ -84,11 +84,11 @@ def logout():
 @app.route('/delete/', methods = ['GET','POST'])
 def deletePpt():
 	if request.method == "POST":
-		print(request.form['deleteIt'])
+		# print(request.form['deleteIt'])
 		Delete(request.form['deleteIt'])
 		global image_list
 		image_list = Content()
-		print (image_list)
+		# print (image_list)
 		return redirect(url_for("adminPanel"))
 	else:
 		return redirect(url_for("adminPanel"))
@@ -130,4 +130,4 @@ def customize():
 
 if __name__ == '__main__':
 	# app.run(host='192.168.12.155', debug=True)
-	app.run(debug=True)
+	app.run()

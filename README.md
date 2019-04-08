@@ -13,7 +13,7 @@ This app displays the given powerpoint presentations on a webpage using flask wh
 cd slider
 virtualenv venv
 source venv/bin/activate
-pip install requirements.txt
+pip3 install -r requirements.txt
 ```
 
 4. Install unoconv using following command
@@ -22,4 +22,4 @@ pip install requirements.txt
 
 5. That's it. Now you can run development server at [http://127.0.0.1:5000]
 
-> python \_\_init\_\_.py
+> python3 \_\_init\_\_.py

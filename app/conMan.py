@@ -4,7 +4,7 @@ from PyPDF2 import PdfFileMerger
 def Slide_Extractor():
 
 	files = glob.glob('./media/*')
-	print ("REMOVING FILES: ", files)
+	# print ("REMOVING FILES: ", files)
 	for f in files:
 		os.remove(f)
 
@@ -13,7 +13,7 @@ def Slide_Extractor():
 	for ppt in slide_directory:
 		if ppt.endswith('.pptx') or ppt.endswith('.ppt'):
 			ppt_list.append(ppt)
-	print (ppt_list)
+	# print (ppt_list)
 
 	directory = os.getcwd()
 	directory = directory + '/uploads'
@@ -31,11 +31,11 @@ def Slide_Extractor():
 		if pdf.endswith('.pdf'):
 			pdf_list.append(pdf)
 			merger.append(pdf)
-	print (pdf_list)
+	# print (pdf_list)
 
 	directory = directory + '/../media'
 	os.chdir(directory)
-	print (os.getcwd())
+	# print (os.getcwd())
 
 	merger.write("combine.pdf")
 
@@ -50,12 +50,12 @@ def Slide_Extractor():
 	for image in image_directory:
 		if image.endswith('.png'):
 			image_list.append(image)
-	print (image_list)
-	print (len(image_list))
+	# print (image_list)
+	# print (len(image_list))
 
 	directory = directory + '/..'
 	os.chdir(directory)
-	print (os.getcwd())
+	# print (os.getcwd())
 
 	return (len(image_list))
 
@@ -66,7 +66,7 @@ def Content():
 	for i in range(1,count+1):
 		IMAGE_LIST.append("image{0}.png".format(i))
 
-	print(IMAGE_LIST)
+	# print(IMAGE_LIST)
 	return IMAGE_LIST
 
 
@@ -77,20 +77,20 @@ def Display():
 		if ppt.endswith('.pptx') or ppt.endswith('.ppt'):
 			ppt_list.append(ppt)
 
-	print (ppt_list)
+	# print (ppt_list)
 	return (ppt_list)
 
 def Delete(file_name):
 	if(file_name[:3] == "yes"):
 		file_name = file_name[4:]
-		print (file_name)
-		print (type(file_name))
+		# print (file_name)
+		# print (type(file_name))
 		os.remove('./uploads/'+file_name)
 		file_name = file_name.replace('pptx', 'pdf')
 		file_name = file_name.replace('ppt', 'pdf')
-		print (file_name)
+		# print (file_name)
 		os.remove('./uploads/'+file_name)
 		slide_directory = os.listdir('./uploads')
-		print (slide_directory)
+		# print (slide_directory)
 	else:
 		print("You did not want to delete")

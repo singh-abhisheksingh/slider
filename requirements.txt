@@ -1,7 +1,7 @@
 Click==7.0
 Flask==1.0.2
 ghostscript==0.6
-ItsDangerous==1.0.0
+ItsDangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.0
 PyPDF2==1.26.0
